@@ -4,7 +4,7 @@ namespace Shadowinek\AdventOfCode;
 
 class AoC
 {
-    private function readInput(int $year, int $puzzle, bool $real_input, bool $second_input): array
+    private function readInput(int $year, int $puzzle, bool $real_input, string $second_input): array
     {
         return file(
             sprintf(
@@ -12,7 +12,7 @@ class AoC
                 $real_input ? '' : '_test',
                 $year,
                 $this->getNumberString($puzzle),
-                $second_input ? '_02' : ''
+                $second_input
             ),FILE_IGNORE_NEW_LINES);
     }
 
@@ -21,7 +21,7 @@ class AoC
         return sprintf('%02d', $number);
     }
 
-    public function execute(int $year, int $puzzle, int $part, bool $real_input, bool $second_input = false): void
+    public function execute(int $year, int $puzzle, int $part, bool $real_input, string $second_input = ''): void
     {
         $data = $this->readInput($year, $puzzle, $real_input, $second_input);
         $expected = include_once(__DIR__ . "/../data/output/{$year}.php");
