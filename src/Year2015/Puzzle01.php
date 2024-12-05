@@ -7,6 +7,7 @@ use Shadowinek\AdventOfCode\AbstractPuzzle;
 class Puzzle01 extends AbstractPuzzle
 {
     private array $steps = [];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -38,7 +39,7 @@ class Puzzle01 extends AbstractPuzzle
             }
 
             if ($level === -1) {
-                return $i+1;
+                return $i + 1;
             }
         }
 

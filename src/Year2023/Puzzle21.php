@@ -18,6 +18,7 @@ class Puzzle21 extends AbstractPuzzle
     private const STEPS = 64;
     private array $neighbours = [];
     private array $reached = [];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -57,13 +58,12 @@ class Puzzle21 extends AbstractPuzzle
     {
         $this->reached[$this->start] = true;
 
-        for ($i=0;$i<self::STEPS;$i++) {
+        for ($i = 0; $i < self::STEPS; $i++) {
             $this->calculateStep();
         }
 
         return array_sum($this->reached);
     }
-
 
 
     public function runPart02(): int

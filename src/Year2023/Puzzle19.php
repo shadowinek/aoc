@@ -16,6 +16,7 @@ class Puzzle19 extends AbstractPuzzle
     private array $rejected = [];
 
     private const INPUT_RULE = 'in';
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -209,7 +210,7 @@ class Puzzle19 extends AbstractPuzzle
                             'amount' => $amount,
                             'destination' => $destination,
                         ];
-                    } elseif (str_contains($condition,  self::SMALLER_THAN)) {
+                    } elseif (str_contains($condition, self::SMALLER_THAN)) {
                         list($variable, $rest) = explode(self::SMALLER_THAN, $condition);
                         list($amount, $destination) = explode(':', $rest);
                         $this->rules[$rule][] = [

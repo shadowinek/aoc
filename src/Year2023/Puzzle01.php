@@ -37,7 +37,7 @@ class Puzzle01 extends AbstractPuzzle
             $chars = str_split($data);
 
             foreach ($chars as $char) {
-                if ((int) $char) {
+                if ((int)$char) {
                     $this->numbers[$id] = $char;
                     break;
                 }
@@ -46,7 +46,7 @@ class Puzzle01 extends AbstractPuzzle
             $chars = array_reverse($chars);
 
             foreach ($chars as $char) {
-                if ((int) $char) {
+                if ((int)$char) {
                     $this->numbers[$id] .= $char;
                     break;
                 }
@@ -72,6 +72,6 @@ class Puzzle01 extends AbstractPuzzle
 
     private function mapNumber(string $input): int
     {
-        return $this->map[$input] ?? (int) $input;
+        return $this->map[$input] ?? (int)$input;
     }
 }

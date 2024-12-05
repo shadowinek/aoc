@@ -9,6 +9,7 @@ abstract class AbstractPuzzle
     }
 
     abstract public function runPart01(): int;
+
     abstract public function runPart02(): int;
 
     protected function parseNumbers(string $input): array

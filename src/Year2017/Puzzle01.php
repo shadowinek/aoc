@@ -12,7 +12,7 @@ class Puzzle01 extends AbstractPuzzle
         $numbers = str_split($this->data[0]);
 
         foreach ($numbers as $i => $number) {
-            if ($this->isValid($number, $numbers[$i+1] ?? $numbers[0])) {
+            if ($this->isValid($number, $numbers[$i + 1] ?? $numbers[0])) {
                 $total += $number;
             }
         }
@@ -42,7 +42,7 @@ class Puzzle01 extends AbstractPuzzle
 
     private function getValidPair(array $numbers, int $index, int $count): int
     {
-        $newIndex = $index + $count/2;
+        $newIndex = $index + $count / 2;
 
         if (!isset($numbers[$newIndex])) {
             $newIndex -= $count;

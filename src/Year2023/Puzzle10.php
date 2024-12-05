@@ -355,12 +355,14 @@ class Node
     public bool $loop = false;
 
     public ?int $step = null;
+
     public function __construct(
         public string $id,
         public string $row,
         public string $col,
         public string $type,
-        public array $openings = []
-    ) {
+        public array  $openings = []
+    )
+    {
     }
 }

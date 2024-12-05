@@ -6,6 +6,7 @@ class Puzzle15 extends AbstractPuzzle
 {
     private array $strings = [];
     private array $boxes = [];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -55,7 +56,7 @@ class Puzzle15 extends AbstractPuzzle
         foreach ($this->boxes as $i => $box) {
             $j = 1;
             foreach ($box as $lens) {
-                $total += ($i+1) * $lens['value'] * $j;
+                $total += ($i + 1) * $lens['value'] * $j;
                 $j++;
             }
         }

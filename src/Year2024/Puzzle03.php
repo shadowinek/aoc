@@ -16,10 +16,10 @@ class Puzzle03 extends AbstractPuzzle
 
         foreach ($this->muls as $set) {
             foreach ($set as $mul) {
-                    list($x, $y) = $this->parseNumbers($mul);
+                list($x, $y) = $this->parseNumbers($mul);
 
-                    $result += $x * $y;
-                }
+                $result += $x * $y;
+            }
         }
 
         return $result;

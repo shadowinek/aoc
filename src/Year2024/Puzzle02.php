@@ -26,8 +26,8 @@ class Puzzle02 extends AbstractPuzzle
     {
         $isGrowing = null;
 
-        for ($i=0;$i<count($input)-1;$i++) {
-            $diff = $input[$i] - $input[$i+1];
+        for ($i = 0; $i < count($input) - 1; $i++) {
+            $diff = $input[$i] - $input[$i + 1];
 
             if (abs($diff) > 3 || abs($diff) < 1) {
                 return false;
@@ -49,8 +49,8 @@ class Puzzle02 extends AbstractPuzzle
     {
         $isGrowing = null;
 
-        for ($i=0;$i<count($input)-1;$i++) {
-            $diff = $input[$i] - $input[$i+1];
+        for ($i = 0; $i < count($input) - 1; $i++) {
+            $diff = $input[$i] - $input[$i + 1];
 
             if (abs($diff) > 3 || abs($diff) < 1 || ($isGrowing !== null && $isGrowing !== ($diff > 0))) {
                 return $this->isSubarraySafe($input);
@@ -66,7 +66,7 @@ class Puzzle02 extends AbstractPuzzle
 
     private function isSubarraySafe(array $input): bool
     {
-        for ($i=0;$i<count($input);$i++) {
+        for ($i = 0; $i < count($input); $i++) {
             $subarray = $input;
             unset($subarray[$i]);
 

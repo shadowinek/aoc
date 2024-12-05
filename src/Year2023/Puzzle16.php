@@ -50,7 +50,7 @@ class Puzzle16 extends AbstractPuzzle
                     case self::TYPE_ROW:
                         switch ($laser->direction) {
                             case self::DIRECTION_RIGHT:
-                                for ($i=$y+1;$i<count($this->map[$x]);$i++) {
+                                for ($i = $y + 1; $i < count($this->map[$x]); $i++) {
                                     if (isset($this->map[$x][$i])) {
                                         $next = $this->map[$x][$i];
                                         $this->energized[$this->getKey($x, $i)] = self::ON;
@@ -76,7 +76,7 @@ class Puzzle16 extends AbstractPuzzle
                                 }
                                 break;
                             case self::DIRECTION_LEFT:
-                                for ($i=$y-1;$i>=0;$i--) {
+                                for ($i = $y - 1; $i >= 0; $i--) {
                                     if (isset($this->map[$x][$i])) {
                                         $next = $this->map[$x][$i];
                                         $this->energized[$this->getKey($x, $i)] = self::ON;
@@ -109,7 +109,7 @@ class Puzzle16 extends AbstractPuzzle
                     case self::TYPE_COL:
                         switch ($laser->direction) {
                             case self::DIRECTION_DOWN:
-                                for ($i=$x+1;$i<count($this->map);$i++) {
+                                for ($i = $x + 1; $i < count($this->map); $i++) {
                                     if (isset($this->map[$i][$y])) {
                                         $next = $this->map[$i][$y];
                                         $this->energized[$this->getKey($i, $y)] = self::ON;
@@ -135,7 +135,7 @@ class Puzzle16 extends AbstractPuzzle
                                 }
                                 break;
                             case self::DIRECTION_UP:
-                                for ($i=$x-1;$i>=0;$i--) {
+                                for ($i = $x - 1; $i >= 0; $i--) {
                                     if (isset($this->map[$i][$y])) {
                                         $next = $this->map[$i][$y];
                                         $this->energized[$this->getKey($i, $y)] = self::ON;
@@ -182,17 +182,17 @@ class Puzzle16 extends AbstractPuzzle
 
         $count = count($this->map);
 
-        for ($i=0;$i<$count;$i++) {
+        for ($i = 0; $i < $count; $i++) {
             $laser = new Laser($this->getKey($i, -1), self::DIRECTION_RIGHT, self::TYPE_ROW);
             $this->laserShow([$laser]);
 
-            $laser = new Laser($this->getKey($i, $count+1), self::DIRECTION_LEFT, self::TYPE_ROW);
+            $laser = new Laser($this->getKey($i, $count + 1), self::DIRECTION_LEFT, self::TYPE_ROW);
             $this->laserShow([$laser]);
 
             $laser = new Laser($this->getKey(-1, $i), self::DIRECTION_DOWN, self::TYPE_COL);
             $this->laserShow([$laser]);
 
-            $laser = new Laser($this->getKey($count+1, $i), self::DIRECTION_UP, self::TYPE_COL);
+            $laser = new Laser($this->getKey($count + 1, $i), self::DIRECTION_UP, self::TYPE_COL);
             $this->laserShow([$laser]);
         }
 
@@ -232,8 +232,10 @@ class Puzzle16 extends AbstractPuzzle
     }
 }
 
-class Laser {
-    public function __construct(public string $start, public int $direction, public int $type) {
+class Laser
+{
+    public function __construct(public string $start, public int $direction, public int $type)
+    {
 
     }
 

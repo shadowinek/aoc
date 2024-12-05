@@ -69,7 +69,7 @@ class Puzzle07 extends AbstractPuzzle
 
             $this->hands[] = [
                 'cards' => $cards,
-                'bid' => (int) $split[1],
+                'bid' => (int)$split[1],
                 'strength' => $this->determineHandStrength($cards, $useJokers) + $this->determineCardsStrength($cards),
             ];
         }
@@ -80,7 +80,7 @@ class Puzzle07 extends AbstractPuzzle
         $strength = 0;
 
         foreach ($cards as $id => $card) {
-            $strength += $this->mappings[$card] * pow(10, 8 - 2*$id);
+            $strength += $this->mappings[$card] * pow(10, 8 - 2 * $id);
         }
 
         return $strength;

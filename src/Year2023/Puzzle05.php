@@ -154,7 +154,7 @@ class Puzzle05 extends AbstractPuzzle
                 $numbers = $this->parseNumbers(substr($data, 7));
 
                 if ($part === 1) {
-                	$this->parseSeedsForPart1($numbers);
+                    $this->parseSeedsForPart1($numbers);
                 } else {
                     $this->parseSeedsForPart2($numbers);
                 }
@@ -178,13 +178,13 @@ class Puzzle05 extends AbstractPuzzle
             } else {
                 $numbers = $this->parseNumbers($data);
 
-                $this->maps[$currentMap][(int) $numbers[1]] = [
-                    'minDestination' => (int) $numbers[0],
-                    'maxDestination' => (int) ($numbers[0] + $numbers[2] - 1),
-                    'minSource' => (int) $numbers[1],
-                    'maxSource' => (int) ($numbers[1] + $numbers[2] - 1),
-                    'range' => (int) $numbers[2],
-                    'shift' => (int) ($numbers[0] - $numbers[1]),
+                $this->maps[$currentMap][(int)$numbers[1]] = [
+                    'minDestination' => (int)$numbers[0],
+                    'maxDestination' => (int)($numbers[0] + $numbers[2] - 1),
+                    'minSource' => (int)$numbers[1],
+                    'maxSource' => (int)($numbers[1] + $numbers[2] - 1),
+                    'range' => (int)$numbers[2],
+                    'shift' => (int)($numbers[0] - $numbers[1]),
                 ];
             }
         }
@@ -193,7 +193,7 @@ class Puzzle05 extends AbstractPuzzle
     private function parseSeedsForPart1(array $numbers): void
     {
         foreach ($numbers as $number) {
-            $this->seeds[] = (int) $number;
+            $this->seeds[] = (int)$number;
         }
     }
 

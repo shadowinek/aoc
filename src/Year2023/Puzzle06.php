@@ -27,7 +27,7 @@ class Puzzle06 extends AbstractPuzzle
         foreach ($this->races as $race) {
             $better = 0;
 
-            for ($i=0;$i<$race['duration'];$i++) {
+            for ($i = 0; $i < $race['duration']; $i++) {
                 $distance = $i * ($race['duration'] - $i);
 
                 if ($distance > $race['record']) {
@@ -56,8 +56,8 @@ class Puzzle06 extends AbstractPuzzle
 
     private function loadData2(): void
     {
-        $durations = $this->parseNumbers(str_replace(' ', '',$this->data[0]));
-        $records = $this->parseNumbers(str_replace(' ', '',$this->data[1]));
+        $durations = $this->parseNumbers(str_replace(' ', '', $this->data[0]));
+        $records = $this->parseNumbers(str_replace(' ', '', $this->data[1]));
 
         foreach ($durations as $id => $duration) {
             $this->races[$id] = [

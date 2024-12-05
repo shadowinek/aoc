@@ -32,8 +32,8 @@ class Puzzle04 extends AbstractPuzzle
 
         $total = 0;
 
-        for ($x=0; $x<$cols; $x++) {
-            for ($y=0; $y<$rows; $y++) {
+        for ($x = 0; $x < $cols; $x++) {
+            for ($y = 0; $y < $rows; $y++) {
                 if ($this->input[$y][$x] === 'A' && $this->checkX($x, $y)) {
                     $total++;
                 }
@@ -45,10 +45,10 @@ class Puzzle04 extends AbstractPuzzle
 
     private function checkX(int $col, int $row): bool
     {
-        $topLeft = $this->input[$row-1][$col-1] ?? '';
-        $topRight = $this->input[$row-1][$col+1] ?? '';
-        $bottomLeft = $this->input[$row+1][$col-1] ?? '';
-        $bottomRight = $this->input[$row+1][$col+1] ?? '';
+        $topLeft = $this->input[$row - 1][$col - 1] ?? '';
+        $topRight = $this->input[$row - 1][$col + 1] ?? '';
+        $bottomLeft = $this->input[$row + 1][$col - 1] ?? '';
+        $bottomRight = $this->input[$row + 1][$col + 1] ?? '';
 
         $check1 = ($topLeft === 'M' && $bottomRight === 'S') || ($topLeft === 'S' && $bottomRight === 'M');
         $check2 = ($topRight === 'M' && $bottomLeft === 'S') || ($topRight === 'S' && $bottomLeft === 'M');
@@ -67,10 +67,10 @@ class Puzzle04 extends AbstractPuzzle
         $rows = count($this->input);
 
         // vertical
-        for ($x=0; $x<$cols; $x++) {
+        for ($x = 0; $x < $cols; $x++) {
             $string = '';
 
-            for ($y=0; $y<$rows; $y++) {
+            for ($y = 0; $y < $rows; $y++) {
                 $string .= $this->input[$y][$x];
             }
 
@@ -78,11 +78,11 @@ class Puzzle04 extends AbstractPuzzle
         }
 
         // diagonal
-        for ($x=0; $x<$cols; $x++) {
+        for ($x = 0; $x < $cols; $x++) {
             $string = '';
             $z = $x;
 
-            for ($y=0; $y<$rows; $y++) {
+            for ($y = 0; $y < $rows; $y++) {
                 if (isset($this->input[$y][$z])) {
                     $string .= $this->input[$y][$z];
                 }
@@ -92,12 +92,12 @@ class Puzzle04 extends AbstractPuzzle
             $this->strings[] = $string;
         }
 
-        for ($y=1; $y<$rows; $y++) {
+        for ($y = 1; $y < $rows; $y++) {
             $string = '';
             $z = $y;
 
-            for ($x=0; $x<$cols; $x++) {
-                if(isset($this->input[$z][$x])) {
+            for ($x = 0; $x < $cols; $x++) {
+                if (isset($this->input[$z][$x])) {
                     $string .= $this->input[$z][$x];
                 }
                 $z++;
@@ -107,12 +107,12 @@ class Puzzle04 extends AbstractPuzzle
         }
 
         // reverse diagonal
-        for ($y=$rows-1; $y>=0; $y--) {
+        for ($y = $rows - 1; $y >= 0; $y--) {
             $string = '';
             $z = $y;
 
-            for ($x=0; $x<$cols; $x++) {
-                if(isset($this->input[$z][$x])) {
+            for ($x = 0; $x < $cols; $x++) {
+                if (isset($this->input[$z][$x])) {
                     $string .= $this->input[$z][$x];
                 }
                 $z--;
@@ -121,11 +121,11 @@ class Puzzle04 extends AbstractPuzzle
             $this->strings[] = $string;
         }
 
-        for ($x=1; $x<$cols; $x++) {
+        for ($x = 1; $x < $cols; $x++) {
             $string = '';
             $z = $x;
 
-            for ($y=$rows-1; $y>=0; $y--) {
+            for ($y = $rows - 1; $y >= 0; $y--) {
                 if (isset($this->input[$y][$z])) {
                     $string .= $this->input[$y][$z];
                 }

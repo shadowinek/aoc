@@ -7,6 +7,7 @@ use Shadowinek\AdventOfCode\AbstractPuzzle;
 class Puzzle02 extends AbstractPuzzle
 {
     private array $gifts = [];
+
     public function runPart01(): int
     {
         $this->loadData();

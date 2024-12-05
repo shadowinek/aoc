@@ -43,8 +43,8 @@ class Puzzle01 extends AbstractPuzzle
         foreach ($this->data as $line) {
             $numbers = $this->parseNumbers($line);
 
-            $this->leftNumbers[] = (int) $numbers[0];
-            $this->rightNumbers[] = (int) $numbers[1];
+            $this->leftNumbers[] = (int)$numbers[0];
+            $this->rightNumbers[] = (int)$numbers[1];
         }
     }
 }

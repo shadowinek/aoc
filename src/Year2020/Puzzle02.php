@@ -54,8 +54,8 @@ class Puzzle02 extends AbstractPuzzle
             preg_match('/(\d+)-(\d+) (\w): (\w+)/', $line, $matches);
 
             $this->passwords[] = [
-                'min' => (int) $matches[1],
-                'max' => (int) $matches[2],
+                'min' => (int)$matches[1],
+                'max' => (int)$matches[2],
                 'char' => $matches[3],
                 'password' => $matches[4]
             ];

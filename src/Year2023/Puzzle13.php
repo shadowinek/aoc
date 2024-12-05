@@ -17,6 +17,7 @@ class Puzzle13 extends AbstractPuzzle
         self::ASH => 0,
         self::ROCK => 1,
     ];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -45,7 +46,7 @@ class Puzzle13 extends AbstractPuzzle
     {
         $length = count($island);
 
-        for ($i=1;$i<$length;$i++) {
+        for ($i = 1; $i < $length; $i++) {
             $totalSmudges = $this->compare(
                 array_reverse(array_slice($island, 0, $i)),
                 array_slice($island, $i)
@@ -79,7 +80,8 @@ class Puzzle13 extends AbstractPuzzle
         return $smudges;
     }
 
-    private function countDifferentBits($binaryNum1, $binaryNum2) {
+    private function countDifferentBits($binaryNum1, $binaryNum2)
+    {
         // Convert binary strings to decimal
         $decimalNum1 = bindec($binaryNum1);
         $decimalNum2 = bindec($binaryNum2);
@@ -106,7 +108,7 @@ class Puzzle13 extends AbstractPuzzle
         foreach ($this->data as $data) {
             if (empty($data)) {
                 $i++;
-                $x=0;
+                $x = 0;
                 continue;
             }
 

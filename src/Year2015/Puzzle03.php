@@ -8,6 +8,7 @@ class Puzzle03 extends AbstractPuzzle
 {
     private array $directions = [];
     private array $houses = [];
+
     public function runPart01(): int
     {
         $this->loadData();

@@ -13,7 +13,7 @@ class AoC
                 $year,
                 $this->getNumberString($puzzle),
                 $second_input
-            ),FILE_IGNORE_NEW_LINES);
+            ), FILE_IGNORE_NEW_LINES);
     }
 
     private function getNumberString(string $number): string

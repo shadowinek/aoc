@@ -98,7 +98,7 @@ class Puzzle11 extends AbstractPuzzle
             }
         }
 
-        for ($i=0;$i<count($this->data);$i++) {
+        for ($i = 0; $i < count($this->data); $i++) {
             if (!isset($this->galaxiesRow[$i])) {
                 $this->emptyRow[$i] = 0;
             }

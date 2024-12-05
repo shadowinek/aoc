@@ -47,11 +47,11 @@ class Puzzle03 extends AbstractPuzzle
         $maxI = count($this->numbers);
         $maxJ = count($this->numbers[0]);
 
-        for ($i=0;$i<$maxI; $i++) {
+        for ($i = 0; $i < $maxI; $i++) {
             $found = '';
             $toCheck = [];
 
-            for ($j=0; $j<$maxJ; $j++) {
+            for ($j = 0; $j < $maxJ; $j++) {
                 $digit = $this->numbers[$i][$j];
 
                 if ($digit !== false) {
@@ -82,11 +82,11 @@ class Puzzle03 extends AbstractPuzzle
         $maxI = count($this->numbers);
         $maxJ = count($this->numbers[0]);
 
-        for ($i=0;$i<$maxI; $i++) {
+        for ($i = 0; $i < $maxI; $i++) {
             $found = '';
             $toCheck = [];
 
-            for ($j=0; $j<$maxJ; $j++) {
+            for ($j = 0; $j < $maxJ; $j++) {
                 $digit = $this->numbers[$i][$j];
 
                 if ($digit !== false) {

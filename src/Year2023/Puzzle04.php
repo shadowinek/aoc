@@ -5,6 +5,7 @@ namespace Shadowinek\Aoc2023;
 class Puzzle04 extends AbstractPuzzle
 {
     private array $scratchcards = [];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -16,13 +17,13 @@ class Puzzle04 extends AbstractPuzzle
     {
         $this->loadData();
 
-        for ($j=1;$j<=count($this->scratchcards);$j++) {
+        for ($j = 1; $j <= count($this->scratchcards); $j++) {
             $card = $this->scratchcards[$j];
 
             if ($card['count'] > 0) {
-                for ($i=1;$i<=$card['count'];$i++) {
-                    if (isset($this->scratchcards[$j+$i])) {
-                        $this->scratchcards[$j+$i]['copies'] += $card['copies'];
+                for ($i = 1; $i <= $card['count']; $i++) {
+                    if (isset($this->scratchcards[$j + $i])) {
+                        $this->scratchcards[$j + $i]['copies'] += $card['copies'];
                     }
                 }
             }
@@ -30,6 +31,7 @@ class Puzzle04 extends AbstractPuzzle
 
         return array_sum(array_column($this->scratchcards, 'copies'));
     }
+
     private function loadData(): void
     {
         foreach ($this->data as $data) {

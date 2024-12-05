@@ -87,7 +87,7 @@ class Puzzle14 extends AbstractPuzzle
 
     private function getLoop(): array
     {
-        for ($i=1;$i<=self::CYCLES;$i++) {
+        for ($i = 1; $i <= self::CYCLES; $i++) {
             $this->doCycle();
 
             $key = $this->getString();

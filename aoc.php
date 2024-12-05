@@ -9,7 +9,7 @@ use Shadowinek\AdventOfCode\AoC;
 
 if ($argc > 4) {
     $aoc = new AoC();
-    $aoc->execute((int) $argv[1], (int) $argv[2], (int) $argv[3], (bool) $argv[4], $argv[5] ?? '');
+    $aoc->execute((int)$argv[1], (int)$argv[2], (int)$argv[3], (bool)$argv[4], $argv[5] ?? '');
 } else {
     echo 'Too few arguments!' . PHP_EOL;
 }
