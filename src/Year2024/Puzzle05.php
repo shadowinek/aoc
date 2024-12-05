@@ -28,7 +28,7 @@ class Puzzle05 extends AbstractPuzzle
     {
         while (count($print) > 1) {
             $page = array_shift($print);
-            $needle =  $this->pages[$page] ?? [];
+            $needle = $this->pages[$page] ?? [];
 
             if (!empty(array_intersect($needle, $print))) {
                 return false;
@@ -66,7 +66,7 @@ class Puzzle05 extends AbstractPuzzle
 
         while (count($print) > 1) {
             $page = array_shift($print);
-            $needle =  $this->pages[$page] ?? [];
+            $needle = $this->pages[$page] ?? [];
 
             $intersect = array_intersect($needle, $print);
 
