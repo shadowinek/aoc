@@ -30,7 +30,6 @@ class Puzzle05 extends AbstractPuzzle
             $page = array_shift($print);
             $needle =  $this->pages[$page] ?? [];
 
-
             if (!empty(array_intersect($needle, $print))) {
                 return false;
             }
@@ -69,8 +68,10 @@ class Puzzle05 extends AbstractPuzzle
             $page = array_shift($print);
             $needle =  $this->pages[$page] ?? [];
 
-            if (!empty(array_intersect($needle, $print))) {
-                $print = $this->reorder($print, $page, array_intersect($needle, $print));
+            $intersect = array_intersect($needle, $print);
+
+            if (!empty($intersect)) {
+                $print = $this->reorder($print, $page, $intersect);
             } else {
                 $correct[] = $page;
             }
@@ -79,9 +80,9 @@ class Puzzle05 extends AbstractPuzzle
         return $this->findMiddle($correct);
     }
 
-    private function reorder(array $print, int $page, array $diff): array
+    private function reorder(array $print, int $page, array $intersect): array
     {
-        $newPage = reset($diff);
+        $newPage = reset($intersect);
 
         $newPrint[] = $newPage;
 
