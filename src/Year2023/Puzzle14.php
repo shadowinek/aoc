@@ -1,6 +1,8 @@
 <?php
 
-namespace Shadowinek\Aoc2023;
+namespace Shadowinek\AdventOfCode\Year2023;
+
+use Shadowinek\AdventOfCode\AbstractPuzzle;
 
 class Puzzle14 extends AbstractPuzzle
 {

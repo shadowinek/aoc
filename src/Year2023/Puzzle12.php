@@ -1,6 +1,8 @@
 <?php
 
-namespace Shadowinek\Aoc2023;
+namespace Shadowinek\AdventOfCode\Year2023;
+
+use Shadowinek\AdventOfCode\AbstractPuzzle;
 
 /**
  * Solved with the help of https://www.reddit.com/r/adventofcode/comments/18hbbxe/2023_day_12python_stepbystep_tutorial_with_bonus/
