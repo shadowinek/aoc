@@ -9,7 +9,7 @@ class Puzzle04 extends AbstractPuzzle
     private array $input = [];
     private array $strings = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData01();
 
@@ -23,7 +23,7 @@ class Puzzle04 extends AbstractPuzzle
         return $total;
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData02();
 

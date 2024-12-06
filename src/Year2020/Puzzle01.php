@@ -8,7 +8,7 @@ class Puzzle01 extends AbstractPuzzle
 {
     private const int SEARCH_VALUE = 2020;
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         foreach ($this->data as $number) {
             $needle = self::SEARCH_VALUE - $number;
@@ -21,7 +21,7 @@ class Puzzle01 extends AbstractPuzzle
         return 0;
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $data = array_flip($this->data);
 

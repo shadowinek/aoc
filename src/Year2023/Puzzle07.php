@@ -31,14 +31,14 @@ class Puzzle07 extends AbstractPuzzle
     private const TWO_OF_KIND = 20000000000;
     private const HIGH_CARD = 10000000000;
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
         return $this->calculate();
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData(true);
 

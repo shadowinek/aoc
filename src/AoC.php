@@ -32,8 +32,6 @@ class AoC
             $this->getNumberString($puzzle)
         );
 
-        echo $class . PHP_EOL;
-
         $method = 'runPart' . $this->getNumberString($part);
 
         echo 'Year:     ' . $year . PHP_EOL;

@@ -8,9 +8,9 @@ abstract class AbstractPuzzle
     {
     }
 
-    abstract public function runPart01(): int;
+    abstract public function runPart01(): mixed;
 
-    abstract public function runPart02(): int;
+    abstract public function runPart02(): mixed;
 
     protected function parseNumbers(string $input): array
     {

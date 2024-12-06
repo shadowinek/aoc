@@ -17,7 +17,7 @@ class Puzzle11 extends AbstractPuzzle
     private const PART_01 = 1;
     private const PART_02 = 1000000;
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -65,7 +65,7 @@ class Puzzle11 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
 

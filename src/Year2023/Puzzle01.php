@@ -19,14 +19,14 @@ class Puzzle01 extends AbstractPuzzle
         'nine' => 9,
     ];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData01();
 
         return array_sum($this->numbers);
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData02();
 

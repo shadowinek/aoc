@@ -19,7 +19,7 @@ class Puzzle19 extends AbstractPuzzle
 
     private const INPUT_RULE = 'in';
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -85,7 +85,7 @@ class Puzzle19 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
 

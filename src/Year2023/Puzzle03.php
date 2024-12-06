@@ -20,7 +20,7 @@ class Puzzle03 extends AbstractPuzzle
         '/', '*', '#', '=', '@', '+', '-', '&', '$', '%',
     ];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData01();
         $this->calculate01();
@@ -28,7 +28,7 @@ class Puzzle03 extends AbstractPuzzle
         return array_sum($this->lifts);
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData02();
         $this->calculate02();

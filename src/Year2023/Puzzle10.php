@@ -87,7 +87,7 @@ class Puzzle10 extends AbstractPuzzle
         self::WEST => self::EAST,
     ];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
         $this->connect();
@@ -240,7 +240,7 @@ class Puzzle10 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
         $this->connect();

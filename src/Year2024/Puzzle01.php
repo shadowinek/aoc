@@ -9,7 +9,7 @@ class Puzzle01 extends AbstractPuzzle
     private array $leftNumbers = [];
     private array $rightNumbers = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -25,7 +25,7 @@ class Puzzle01 extends AbstractPuzzle
         return $distance;
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
         $occurrences = array_count_values($this->rightNumbers);

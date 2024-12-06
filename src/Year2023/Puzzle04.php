@@ -8,14 +8,14 @@ class Puzzle04 extends AbstractPuzzle
 {
     private array $scratchcards = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
         return array_sum(array_column($this->scratchcards, 'points'));
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
 

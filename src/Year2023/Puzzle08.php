@@ -22,7 +22,7 @@ class Puzzle08 extends AbstractPuzzle
     private const RIGHT = 1;
 
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
         $steps = 0;
@@ -41,7 +41,7 @@ class Puzzle08 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
         $steps = 0;

@@ -9,7 +9,7 @@ class Puzzle05 extends AbstractPuzzle
     private array $pages = [];
     private array $prints = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -45,7 +45,7 @@ class Puzzle05 extends AbstractPuzzle
         return $print[$count];
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
 

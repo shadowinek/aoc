@@ -19,14 +19,14 @@ class Puzzle02 extends AbstractPuzzle
     private array $games = [];
     private array $powers = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData01();
 
         return array_sum($this->games);
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData02();
 

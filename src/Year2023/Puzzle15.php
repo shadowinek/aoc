@@ -9,7 +9,7 @@ class Puzzle15 extends AbstractPuzzle
     private array $strings = [];
     private array $boxes = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -43,7 +43,7 @@ class Puzzle15 extends AbstractPuzzle
     }
 
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
         $this->sortLenses();

@@ -29,7 +29,7 @@ class Puzzle16 extends AbstractPuzzle
 
     private array $results = [];
 
-    public function runPart01(): int
+    public function runPart01(): mixed
     {
         $this->loadData();
 
@@ -178,7 +178,7 @@ class Puzzle16 extends AbstractPuzzle
         $this->energized = array_fill_keys(array_keys($this->energized), self::OFF);
     }
 
-    public function runPart02(): int
+    public function runPart02(): mixed
     {
         $this->loadData();
 
