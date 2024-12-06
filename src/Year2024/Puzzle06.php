@@ -40,8 +40,12 @@ class Puzzle06 extends AbstractPuzzle
         $currentDirection = 0;
         $map = $this->map;
 
-        while ($col < $this->maxCol - 1 && $row < $this->maxRow - 1 && $col >= 1 && $row >= 1) {
+        while (true) {
             list($newRow, $newCol) = $this->getNextPosition($row, $col, $currentDirection);
+
+            if ($newRow < 0 || $newRow >= $this->maxRow || $newCol < 0 || $newCol >= $this->maxCol) {
+                break;
+            }
 
             if ($this->isFieldType($map, $newRow, $newCol, self::OBSTRUCTION)) {
                 $currentDirection = $this->rotate($currentDirection);
@@ -70,13 +74,9 @@ class Puzzle06 extends AbstractPuzzle
         $total = 0;
 
         foreach ($this->mutations as $i => $mutation) {
-            echo 'Mutation: ' . $i . PHP_EOL;
-
             if ($this->findLoop($mutation)) {
                 $total++;
             }
-
-            echo PHP_EOL;
         }
 
         return $total;
@@ -92,7 +92,7 @@ class Puzzle06 extends AbstractPuzzle
             list($newRow, $newCol) = $this->getNextPosition($row, $col, $currentDirection);
 
             if ($newRow < 0 || $newRow >= $this->maxRow || $newCol < 0 || $newCol >= $this->maxCol) {
-                echo "Out of bounds" . PHP_EOL;
+                // Out of bounds
                 return false;
             }
 
@@ -100,11 +100,13 @@ class Puzzle06 extends AbstractPuzzle
 
             if ($this->isFieldType($map, $newRow, $newCol, self::OBSTRUCTION)) {
                 $currentDirection = $this->rotate($currentDirection);
+                $map[$row][$col] = self::DIRECTION_CROSS;
             } else {
                 $checkDirectionMark = $this->checkDirectionMark($map, $newRow, $newCol, $currentDirectionMark);
 
+
                 if ($checkDirectionMark === self::VISITED && $visited[$newRow][$newCol] === $currentDirection) {
-                    echo "Loop found" . PHP_EOL;
+                    // Loop found
                     return true;
                 }
 
@@ -205,7 +207,7 @@ class Puzzle06 extends AbstractPuzzle
     {
         foreach ($map as $row) {
             foreach ($row as $col) {
-                echo $col;
+                echo $col === '.' ? ' ' : $col;
             }
 
             echo PHP_EOL;
