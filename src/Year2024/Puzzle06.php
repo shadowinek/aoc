@@ -38,21 +38,20 @@ class Puzzle06 extends AbstractPuzzle
 
         list($row, $col) = $this->start;
         $currentDirection = 0;
+        $map = $this->map;
 
         while ($col < $this->maxCol - 1 && $row < $this->maxRow - 1 && $col >= 1 && $row >= 1) {
             list($newRow, $newCol) = $this->getNextPosition($row, $col, $currentDirection);
 
-            if ($this->isFieldType($this->map, $newRow, $newCol, self::OBSTRUCTION)) {
+            if ($this->isFieldType($map, $newRow, $newCol, self::OBSTRUCTION)) {
                 $currentDirection = $this->rotate($currentDirection);
             } else {
                 $this->visited[$newRow][$newCol] = 1;
-                $this->map[$newRow][$newCol] = self::VISITED;
+                $map[$newRow][$newCol] = self::VISITED;
                 $col = $newCol;
                 $row = $newRow;
             }
         }
-
-//        $this->print($this->map);
 
         $total = 0;
 
@@ -65,7 +64,7 @@ class Puzzle06 extends AbstractPuzzle
 
     public function runPart02(): int
     {
-        $this->loadData();
+        $this->runPart01();
         $this->generateMutations();
 
         $total = 0;
@@ -87,63 +86,38 @@ class Puzzle06 extends AbstractPuzzle
     {
         list($row, $col) = $this->start;
         $currentDirection = 0;
-        $rotated = 0;
-        $directions = [
-            $row => [
-                $col => $currentDirection
-            ],
-        ];
+        $visited = [];
 
-        while ($col < $this->maxCol - 1 && $row < $this->maxRow - 1 && $col >= 0 && $row >= 0) {
-            $currentDirectionMark = $this->directionMarks[$currentDirection];
-
+        while (true) {
             list($newRow, $newCol) = $this->getNextPosition($row, $col, $currentDirection);
 
-            if ($newCol < 0 || $newRow < 0) {
+            if ($newRow < 0 || $newRow >= $this->maxRow || $newCol < 0 || $newCol >= $this->maxCol) {
                 echo "Out of bounds" . PHP_EOL;
                 return false;
             }
 
+            $currentDirectionMark = $this->directionMarks[$currentDirection];
+
             if ($this->isFieldType($map, $newRow, $newCol, self::OBSTRUCTION)) {
                 $currentDirection = $this->rotate($currentDirection);
-                $map[$row][$col] = self::DIRECTION_CROSS;
-                $rotated++;
-
-                if ($rotated === 2) {
-                    echo "Double rotate" . PHP_EOL;
-                    return false;
-                }
             } else {
                 $checkDirectionMark = $this->checkDirectionMark($map, $newRow, $newCol, $currentDirectionMark);
 
-                if ($checkDirectionMark === self::VISITED && $directions[$newRow][$newCol] === $currentDirection) {
-//                    $this->print($map);
-
+                if ($checkDirectionMark === self::VISITED && $visited[$newRow][$newCol] === $currentDirection) {
                     echo "Loop found" . PHP_EOL;
                     return true;
-
-//                    echo "Wrong path" . PHP_EOL;
-//                    return false;
                 }
 
                 if ($checkDirectionMark === self::DIRECTION_CROSS) {
                     $currentDirectionMark = self::DIRECTION_CROSS;
                 }
 
+                $visited[$newRow][$newCol] = $currentDirection;
                 $map[$newRow][$newCol] = $currentDirectionMark;
-                $directions[$newRow][$newCol] = $currentDirection;
-
                 $col = $newCol;
                 $row = $newRow;
-                $rotated = 0;
-
-//                $this->print($map);
             }
         }
-
-        echo "No loop found" . PHP_EOL;
-
-        return false;
     }
 
     private function checkDirectionMark(array $map, int $row, int $col, string $currentDirectionMark): ?string
@@ -154,22 +128,24 @@ class Puzzle06 extends AbstractPuzzle
             return self::VISITED;
         }
 
+        $return = null;
+
         switch ($currentDirectionMark) {
             case self::DIRECTION_HORIZONTAL:
                 if ($newDirectionMark === self::DIRECTION_VERTICAL) {
-                    return self::DIRECTION_CROSS;
+                    $return = self::DIRECTION_CROSS;
                 }
                 break;
             case self::DIRECTION_VERTICAL:
                 if ($newDirectionMark === self::DIRECTION_HORIZONTAL) {
-                    return self::DIRECTION_CROSS;
+                    $return = self::DIRECTION_CROSS;
                 }
                 break;
             default:
-                return null;
+                break;
         }
 
-        return null;
+        return $return;
     }
 
     private function loadData(): void
@@ -181,7 +157,6 @@ class Puzzle06 extends AbstractPuzzle
 
                 if ($char === self::GUARD) {
                     $this->start = [$row, $col];
-                    $this->map[$row][$col] = self::DIRECTION_VERTICAL;
                     $this->visited[$row][$col] = 1;
                 }
             }
@@ -196,10 +171,16 @@ class Puzzle06 extends AbstractPuzzle
         for ($row = 0; $row < $this->maxRow; $row++) {
             for ($col = 0; $col < $this->maxCol; $col++) {
                 $mutation = $this->map;
-                if ($this->isFieldType($this->map, $row, $col, self::OPEN) || $this->isFieldType($this->map, $row, $col, self::DIRECTION_VERTICAL)) {
+                if (
+                    $this->visited[$row][$col] === 1
+                    && (
+                        $this->isFieldType($this->map, $row, $col, self::OPEN)
+                        || $this->isFieldType($this->map, $row, $col, self::DIRECTION_VERTICAL
+                        )
+                    )
+                ) {
                     $mutation[$row][$col] = self::OBSTRUCTION;
                     $this->mutations[] = $mutation;
-//                    $this->print($mutation);
                 }
             }
         }
