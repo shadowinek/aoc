@@ -20,7 +20,7 @@ class Puzzle13 extends AbstractPuzzle
         self::ROCK => 1,
     ];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -94,7 +94,7 @@ class Puzzle13 extends AbstractPuzzle
         return array_sum(str_split(decbin($xorResult)));
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
 

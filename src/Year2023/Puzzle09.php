@@ -11,7 +11,7 @@ class Puzzle09 extends AbstractPuzzle
      */
     private array $rows = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -44,7 +44,7 @@ class Puzzle09 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData(true);
 

@@ -6,12 +6,12 @@ use Shadowinek\AdventOfCode\AbstractPuzzle;
 
 class Puzzle05 extends AbstractPuzzle
 {
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         return $this->reduce($this->data[0]);
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $polymers = [];
 

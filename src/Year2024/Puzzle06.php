@@ -32,7 +32,7 @@ class Puzzle06 extends AbstractPuzzle
         3 => self::DIRECTION_HORIZONTAL,
     ];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -66,7 +66,7 @@ class Puzzle06 extends AbstractPuzzle
         return $total;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->runPart01();
         $this->generateMutations();

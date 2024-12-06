@@ -8,7 +8,7 @@ class Puzzle01 extends AbstractPuzzle
 {
     private array $operations = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -21,7 +21,7 @@ class Puzzle01 extends AbstractPuzzle
         return $frequency;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
         $reached = [];

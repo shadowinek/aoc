@@ -8,7 +8,7 @@ class Puzzle02 extends AbstractPuzzle
 {
     private array $strings = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -30,7 +30,7 @@ class Puzzle02 extends AbstractPuzzle
         return $doubles * $triples;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): string
     {
         $this->loadData();
 
@@ -41,12 +41,12 @@ class Puzzle02 extends AbstractPuzzle
                 if (count($diff) === 1) {
                     $result = array_diff_assoc($string, $diff);
 
-                    return implode('', array_unique($result));
+                    return implode('', $result);
                 }
             }
         }
 
-        return null;
+        return '';
     }
 
     private function loadData(): void

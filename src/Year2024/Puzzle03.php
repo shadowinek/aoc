@@ -8,7 +8,7 @@ class Puzzle03 extends AbstractPuzzle
 {
     private array $muls = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData01();
 
@@ -25,7 +25,7 @@ class Puzzle03 extends AbstractPuzzle
         return $result;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData02();
 

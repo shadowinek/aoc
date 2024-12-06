@@ -15,7 +15,7 @@ class Puzzle12 extends AbstractPuzzle
     private const QUESTION = '?';
     private array $cache = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
@@ -102,7 +102,7 @@ class Puzzle12 extends AbstractPuzzle
         return $total;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData(true);
 

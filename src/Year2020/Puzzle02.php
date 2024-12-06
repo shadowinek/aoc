@@ -8,7 +8,7 @@ class Puzzle02 extends AbstractPuzzle
 {
     private array $passwords = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
         $valid = 0;
@@ -24,7 +24,7 @@ class Puzzle02 extends AbstractPuzzle
         return $valid;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
         $valid = 0;

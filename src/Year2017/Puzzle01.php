@@ -6,7 +6,7 @@ use Shadowinek\AdventOfCode\AbstractPuzzle;
 
 class Puzzle01 extends AbstractPuzzle
 {
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $total = 0;
         $numbers = str_split($this->data[0]);
@@ -25,7 +25,7 @@ class Puzzle01 extends AbstractPuzzle
         return $a === $b;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $total = 0;
         $numbers = str_split($this->data[0]);

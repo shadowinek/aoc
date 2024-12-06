@@ -8,7 +8,7 @@ class Puzzle02 extends AbstractPuzzle
 {
     private array $inputs = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
         $safe = 0;
@@ -78,7 +78,7 @@ class Puzzle02 extends AbstractPuzzle
         return false;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
         $safe = 0;

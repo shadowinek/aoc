@@ -15,7 +15,7 @@ class Puzzle04 extends AbstractPuzzle
     private const string AWAKE = 'a';
     private const string ASLEEP = 's';
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
         $this->processData();
@@ -52,7 +52,7 @@ class Puzzle04 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
         $this->processData();

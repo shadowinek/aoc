@@ -21,7 +21,7 @@ class Puzzle21 extends AbstractPuzzle
     private array $neighbours = [];
     private array $reached = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
         $this->calculateNeighbours();
@@ -68,7 +68,7 @@ class Puzzle21 extends AbstractPuzzle
     }
 
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
 

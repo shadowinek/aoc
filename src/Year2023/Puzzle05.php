@@ -20,7 +20,7 @@ class Puzzle05 extends AbstractPuzzle
 
     private array $locations = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData(1);
 
@@ -128,7 +128,7 @@ class Puzzle05 extends AbstractPuzzle
         $this->locations[] = $this->findDestinationRanges($humidity, self::HUMIDITY_TO_LOCATION);
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData(2);
 

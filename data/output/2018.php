@@ -7,7 +7,11 @@ return [
     ],
     2 => [
         1 => [12, 8820],
-        2 => ['fgij', 'bpacnmglhizqyfsjxtkwudr'],
+        2 => ['fgij', 'bpacnmglhizqygfsjixtkwudr'],
+    ],
+    3 => [
+        1 => [4, 3],
+        2 => [3, 3],
     ],
     4 => [
         1 => [240, 72925],

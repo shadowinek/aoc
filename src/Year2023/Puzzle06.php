@@ -8,14 +8,14 @@ class Puzzle06 extends AbstractPuzzle
 {
     private array $races = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
 
         return $this->calculate();
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData2();
 

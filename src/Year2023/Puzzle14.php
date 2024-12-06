@@ -20,7 +20,7 @@ class Puzzle14 extends AbstractPuzzle
     private array $cache = [];
     private array $rowCache = [];
 
-    public function runPart01(): mixed
+    public function runPart01(): int
     {
         $this->loadData();
         $this->shiftRocks(self::NORTH);
@@ -73,7 +73,7 @@ class Puzzle14 extends AbstractPuzzle
         }
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
 
