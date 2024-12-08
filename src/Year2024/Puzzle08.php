@@ -24,7 +24,7 @@ class Puzzle08 extends AbstractPuzzle
         return array_sum($this->antinodes);
     }
 
-    private function findAntinodes(array $nodes, bool $part2 = true): void
+    private function findAntinodes(array $nodes, bool $part2 = false): void
     {
         while ($node = array_shift($nodes)) {
             [$x, $y] = $node;
@@ -36,6 +36,9 @@ class Puzzle08 extends AbstractPuzzle
                 $deltaY = $y - $y2;
 
                 if ($part2) {
+                    $this->antinodes[$x . '-' . $y] = 1;
+                    $this->antinodes[$x2 . '-' . $y2] = 1;
+
                     $i = 1;
 
                     while (true) {
@@ -94,22 +97,7 @@ class Puzzle08 extends AbstractPuzzle
             $this->findAntinodes($nodes, true);
         }
 
-        foreach ($this->antinodes as $key => $value) {
-            [$row, $col] = explode('-', $key);
-            $this->map[$row][$col] = '#';
-        }
-
-        $total = 0;
-
-        foreach ($this->map as $row) {
-            foreach ($row as $col) {
-                if ($col !== self::EMPTY) {
-                    $total++;
-                }
-            }
-        }
-
-        return $total;
+        return array_sum($this->antinodes);
     }
 
     private function loadData(): void
