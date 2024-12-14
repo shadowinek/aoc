@@ -123,23 +123,22 @@ class Puzzle14 extends AbstractPuzzle
                 $this->calculatePosition($robot, $i);
             }
 
-            // I look for a quadrant with heavy concentration of robots
-            foreach ($this->quadrants as $quadrant) {
-                $totalInQuadrant = 0;
+            foreach ($this->map as $row => $rows) {
+                if (array_sum($rows) > 30) {
+                    $together = 0;
+                    for ($j=0;$j<$this->maxCol;$j++) {
+                        if (isset($this->map[$row][$j])) {
+                            $together++;
 
-                [$minRow, $maxRow, $minCol, $maxCol] = array_values($quadrant);
+                            if ($together > 10) {
+//                                $this->print();
 
-                for ($y = $minRow; $y <= $maxRow; $y++) {
-                    for ($x = $minCol; $x <= $maxCol; $x++) {
-                        if (isset($this->map[$y][$x])) {
-                            $totalInQuadrant += $this->map[$y][$x];
+                                return $i;
+                            }
+                        } else {
+                            $together = 0;
                         }
                     }
-                }
-
-                if ($totalInQuadrant > 250) {
-//                    $this->print();
-                    return $i;
                 }
             }
 
