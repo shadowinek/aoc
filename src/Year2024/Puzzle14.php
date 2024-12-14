@@ -113,7 +113,6 @@ class Puzzle14 extends AbstractPuzzle
     public function runPart02(): int
     {
         $this->loadData();
-        $this->getQuadrants();
         $i = 1;
 
         while (true) {
@@ -131,8 +130,6 @@ class Puzzle14 extends AbstractPuzzle
                             $together++;
 
                             if ($together > 10) {
-//                                $this->print();
-
                                 return $i;
                             }
                         } else {
