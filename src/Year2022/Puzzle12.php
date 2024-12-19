@@ -35,7 +35,7 @@ class Puzzle12 extends AbstractPuzzle
         'y' => 25,
         'z' => 26,
         self::START => 0,
-        self::END => 0,
+        self::END => 26,
     ];
 
     private const START = 'S';
@@ -81,8 +81,6 @@ class Puzzle12 extends AbstractPuzzle
 
     private function loadData(bool $isPart2 = false): void
     {
-        echo "!!! Doesn't work on example data !!!" . PHP_EOL;
-
         foreach ($this->data as $row => $cols) {
             foreach (str_split($cols) as $col => $char) {
                 $this->map[$row][$col] = $this->values[$char];
