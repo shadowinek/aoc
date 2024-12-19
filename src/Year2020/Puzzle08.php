@@ -98,7 +98,7 @@ class Puzzle08 extends AbstractPuzzle
 
             $this->instructions[] = [
                 $instruction,
-                (int) $value,
+                (int)$value,
             ];
         }
     }

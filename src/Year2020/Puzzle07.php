@@ -9,6 +9,7 @@ class Puzzle07 extends AbstractPuzzle
     private array $bags = [];
     private const string SHINY_GOLD = 'shiny gold';
     private array $cache = [];
+
     public function runPart01(): int
     {
         $this->loadData();
@@ -71,7 +72,7 @@ class Puzzle07 extends AbstractPuzzle
             preg_match_all('/(\d+) ([a-z ]+) bag/', $contains, $matches);
 
             foreach ($matches[1] as $id => $match) {
-                $bag->addBag($matches[2][$id], (int) $match);
+                $bag->addBag($matches[2][$id], (int)$match);
             }
 
             $this->bags[$color] = $bag;
