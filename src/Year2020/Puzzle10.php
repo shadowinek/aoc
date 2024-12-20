@@ -7,8 +7,6 @@ use Shadowinek\AdventOfCode\AbstractPuzzle;
 class Puzzle10 extends AbstractPuzzle
 {
     private array $adapters = [];
-    private int $buildIn;
-
     public function runPart01(): int
     {
         $this->loadData();
@@ -28,8 +26,6 @@ class Puzzle10 extends AbstractPuzzle
             }
         }
 
-        echo $oneDiff . ' ' . $threeDiff . PHP_EOL;
-
         return $oneDiff * $threeDiff;
     }
 
@@ -37,7 +33,7 @@ class Puzzle10 extends AbstractPuzzle
     {
         $this->loadData();
 
-        return 0;
+
     }
 
     private function loadData(): void
@@ -46,9 +42,7 @@ class Puzzle10 extends AbstractPuzzle
             $this->adapters[] = (int)$line;
         }
 
-        $this->buildIn = max($this->adapters) + 3;
-
-        $this->adapters[] = $this->buildIn;
+        $this->adapters[] = max($this->adapters) + 3;
 
         sort($this->adapters);
     }
