@@ -66,6 +66,9 @@ class Puzzle22 extends AbstractPuzzle
             }
         }
 
+        asort($this->best);
+        print_r($this->best);
+
         return max($this->best);
     }
 
@@ -94,17 +97,17 @@ class Puzzle22 extends AbstractPuzzle
     private function findSecret(int $number): int
     {
         $mul = $number * 64;
-        $number = $this->mixAndPruner($number, $mul);
+        $number = $this->mixAndPrune($number, $mul);
 
         $div = floor($number / 32);
-        $number = $this->mixAndPruner($number, $div);
+        $number = $this->mixAndPrune($number, $div);
 
         $mul = $number * 2048;
 
-        return $this->mixAndPruner($number, $mul);
+        return $this->mixAndPrune($number, $mul);
     }
 
-    private function mixAndPruner(int $number, int $result): int
+    private function mixAndPrune(int $number, int $result): int
     {
         $mix = $number ^ $result;
 
