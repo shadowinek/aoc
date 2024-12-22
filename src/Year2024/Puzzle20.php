@@ -13,7 +13,6 @@ class Puzzle20 extends AbstractPuzzle
     private const string EMPTY = '.';
     private const string START = 'S';
     private const string END = 'E';
-    private const string CHEAT = 'C';
     private array $start;
     private array $end;
     private array $directions = [
@@ -129,92 +128,6 @@ class Puzzle20 extends AbstractPuzzle
         return -1;
     }
 
-    private function aStarWithCheats(): int
-    {
-        $goal = $this->end;
-
-        $cols = array_fill(0, $this->maxCol, INF);
-        $gScore = array_fill(0, $this->maxRow, $cols);
-        $fScore = array_fill(0, $this->maxRow, $cols);
-
-        $startRow = $this->start[0];
-        $startCol = $this->start[1];
-
-        $gScore[$startRow][$startCol] = 0;
-        $fScore[$startRow][$startCol] = $this->heuristic($startRow, $startCol, $goal);
-
-        $openSet[] = [
-            'node' => [$startRow, $startCol],
-            'fScore' => $fScore[$startRow][$startCol],
-            'gScore' => $gScore[$startRow][$startCol],
-            'isCheatActive' => 0,
-            'cheatCount' => 0,
-        ];
-
-        while (!empty($openSet)) {
-            if (count($openSet) > 1) {
-                array_multisort(array_column($openSet, 'fScore'), SORT_ASC, $openSet);
-            }
-
-            $current = array_shift($openSet);
-            $currentNode = $current['node'];
-
-            if ($currentNode == $goal) {
-                return $current['gScore'];
-            }
-
-            foreach ($this->directions as $delta) {
-                $newRow = $currentNode[0] + $delta[0];
-                $newCol = $currentNode[1] + $delta[1];
-                $isCheatActive = $current['isCheatActive'];
-                $cheatCount = $current['cheatCount'];
-
-                if ($newRow < 0 || $newRow >= $this->maxRow || $newCol < 0 || $newCol >= $this->maxCol) {
-                    continue;
-                }
-
-                $currentValue = $this->map[$newRow][$newCol];
-
-                $canPass = $currentValue === self::EMPTY || $currentValue === self::END;
-
-                if ($currentValue === self::CHEAT && $isCheatActive === 0) {
-                    $isCheatActive = 1;
-                    $canPass = true;
-                    $cheatCount++;
-                }
-
-                if ($isCheatActive === 1) {
-                    if ($currentValue === self::WALL && $cheatCount <= 20) {
-                        $canPass = true;
-                        $cheatCount++;
-                    }
-
-                    if ($currentValue === self::EMPTY) {
-                        $isCheatActive = 2;
-                    }
-                }
-
-                if ($canPass) {
-                    $tentativeGScore = $gScore[$currentNode[0]][$currentNode[1]] + 1;
-
-                    if ($tentativeGScore < $gScore[$newRow][$newCol]) {
-                        $gScore[$newRow][$newCol] = $tentativeGScore;
-                        $fScore[$newRow][$newCol] = $gScore[$newRow][$newCol] + $this->heuristic($newRow, $newCol, $goal);
-
-                        $openSet[] = [
-                            'node' => [$newRow, $newCol],
-                            'fScore' => $fScore[$newRow][$newCol],
-                            'gScore' => $gScore[$newRow][$newCol],
-                            'isCheatActive' => $isCheatActive,
-                            'cheatCount' => $cheatCount,
-                        ];
-                    }
-                }
-            }
-        }
-
-        return -1;
-    }
 
     private function heuristic(int $row, int $col, array $goal): int
     {
@@ -225,46 +138,7 @@ class Puzzle20 extends AbstractPuzzle
     {
         $this->loadData();
 
-        $time = $this->aStar();
-        $times = [];
-
-        $a = 0;
-
-        for ($i = 1; $i < $this->maxRow - 1; $i++) {
-            for ($j = 1; $j < $this->maxCol - 1; $j++) {
-                if ($this->map[$i][$j] === self::WALL) {
-                    $this->map[$i][$j] = self::CHEAT;
-                    echo "Iteration: " . $a++ . PHP_EOL;
-                    $times[] = $this->aStarWithCheats();
-
-                    $this->map[$i][$j] = self::WALL;
-                }
-            }
-        }
-
-        $times = array_count_values($times);
-
-        unset($times[-1]);
-
-        ksort($times);
-
-        print_r($times);
-
-        echo "Time: " . $time . PHP_EOL;
-
-        $total = 0;
-
-        foreach ($times as $key => $value) {
-            if ($key < $time) {
-                echo "Saved: " . $time - $key . ' ' . $value . ' times' . PHP_EOL;
-
-                if ($time - $key >= 50) {
-                    $total += $value;
-                }
-            }
-        }
-
-        return $total;
+        return 0;
     }
 
     private function loadData(): void
