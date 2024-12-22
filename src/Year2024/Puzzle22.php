@@ -30,76 +30,43 @@ class Puzzle22 extends AbstractPuzzle
     {
         $this->loadData();
 
-        $total = 0;
-
         foreach ($this->numbers as $number) {
             $secret = $this->findSecrets($number, true);
-            $total += $secret;
             echo "$number: $secret" . PHP_EOL;
 
             $string = str_split((string)$number);
             $last = end($string);
 
+            $pattern = [];
+            $this->patterns[$number] = [];
+
             foreach ($this->bananas[$number] as $price) {
-                $this->patterns[$number][] = $price - $last;
+                $diff = $price - $last;
                 $last = $price;
-            }
-        }
+                $pattern[] = $diff;
 
-//        print_r(array_shift($this->bananas));
-//        print_r(array_shift($this->patterns));
-
-        $this->findBestPattern();
-
-
-        asort($this->best);
-        print_r($this->best);
-
-        return $total;
-    }
-
-    private function findBestPattern(): void
-    {
-        $temp = $this->patterns;
-        $patterns = array_shift($temp);
-
-        $pattern = [];
-
-        while (!empty($patterns)) {
-            $pattern[] = array_shift($patterns);
-
-            if (count($pattern) < 4) {
-                continue;
-            }
-
-            if (count($pattern) === 5) {
-                array_shift($pattern);
-            }
-
-            $this->findPrices($pattern);
-        }
-    }
-
-    private function findPrices(array $pattern): void
-    {
-        $key = implode(';', $pattern);
-        $this->best[$key] = 0;
-
-        foreach ($this->patterns as $id => $patterns) {
-            echo "ID: $id" . PHP_EOL;
-
-            foreach ($patterns as $index => $value) {
-
-                if ($index > 1995) {
+                if (count($pattern) < 4) {
                     continue;
                 }
 
-                if ($value === $pattern[0] && $patterns[$index + 1] === $pattern[1] && $patterns[$index + 2] === $pattern[2] && $patterns[$index + 3] === $pattern[3]) {
-                    $this->best[$key] += $this->bananas[$id][$index + 4];
-                    break;
+                if (count($pattern) === 5) {
+                    array_shift($pattern);
+                }
+
+                $key = implode(';', $pattern);
+                if (!isset($this->patterns[$number][$key])) {
+                    $this->patterns[$number][$key] = $price;
+
+                    if (!isset($this->best[$key])) {
+                        $this->best[$key] = $price;
+                    } else {
+                        $this->best[$key] += $price;
+                    }
                 }
             }
         }
+
+        return max($this->best);
     }
 
     private function loadData(): void
@@ -133,14 +100,14 @@ class Puzzle22 extends AbstractPuzzle
         $number = $this->mixAndPruner($number, $div);
 
         $mul = $number * 2048;
-        $number = $this->mixAndPruner($number, $mul);
 
-        return $number;
+        return $this->mixAndPruner($number, $mul);
     }
 
     private function mixAndPruner(int $number, int $result): int
     {
         $mix = $number ^ $result;
+
         return $mix % 16777216;
     }
 }
