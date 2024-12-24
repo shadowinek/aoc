@@ -93,4 +93,8 @@ return [
         1 => [7, 1512],
         2 => ['co,de,ka,ta', 'ac,ed,fh,kd,lf,mb,om,pe,qt,uo,uy,vr,wg'],
     ],
+    24 => [
+        1 => [2024, 53258032898766],
+        2 => ['z00,z01,z02,z05'], // _02 is for part 2
+    ],
 ];
