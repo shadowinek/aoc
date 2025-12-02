@@ -53,7 +53,7 @@ class Puzzle01 extends AbstractPuzzle
         return $total;
     }
 
-    public function runPart02(): mixed
+    public function runPart02(): int
     {
         $this->loadData();
 
